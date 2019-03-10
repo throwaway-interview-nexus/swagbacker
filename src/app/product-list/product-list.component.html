@@ -1,0 +1,13 @@
+<div class="product-list row" [@sweepUp]>
+  <div *ngFor="let product of products" class="product-wrapper col-3" [routerLink]="['/product/' + product.id]">
+    <div class="product-image">
+      <img [src]="product.imageUrls[0]">
+    </div>
+    <div class="product-description">
+      <span class="product-name">{{product.name}}</span><br/>
+      <span class="product-price">£{{product.price}}</span>
+      <app-goal-status [product]="product"></app-goal-status>
+      <span>{{getProductStatus(product)}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="page-wrapper">
+  <div class="content row">
+    <div class="col-4 image-wrapper">
+      <div class="main-image">
+        <img [src]="mainImage">
+      </div>
+      <div class="all-images row">
+        <div *ngFor="let imageUrl of product.imageUrls" class="small-image col-3" (click)="mainImage = imageUrl;" [class.selected]="mainImage === imageUrl">
+          <img [src]="imageUrl">
+        </div>
+      </div>
+    </div>
+    <div class="col-8 details-wrapper">
+      <h2 class="product-name">{{product.name}}</h2>
+      <h3>£{{product.price}}</h3>
+      <p class="product-description">{{product.description}}</p>
+      <app-goal-status [product]="product"></app-goal-status>
+      <span>{{getProductStatus()}}</span><br/>
+      <button [disabled]="!hasStarted() || hasEnded()" [title]="disabledText()" (click)="addToBasket()">Add to Basket</button>
+      <p *ngIf="message" class="message" [@fadeInOut]>{{message}}</p>
+    </div>
+  </div>
+  <!-- Image -->
+  <!-- Name -->
+  <!-- Description -->
+  <!-- Price -->
+  <!-- Goal progress -->
+  <!-- Status -->
+  <!-- Buy button -->
+</div>

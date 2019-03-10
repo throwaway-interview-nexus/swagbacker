@@ -1,0 +1,30 @@
+<div class="page-wrapper">
+  <!-- Basket items -->
+  <div class="content" *ngIf="basketIsEmpty()">
+    <h2>Basket</h2>
+    <p>There's nothing in your basket. Better get shopping!</p>
+  </div>
+  <div class="content" *ngIf="!basketIsEmpty()">
+    <h2>Basket</h2>
+    <table class="basket-table">
+      <tr *ngFor="let product of getBasketItems()" class="product-wrapper">
+        <td class="image-wrapper"><img [src]="product.product.imageUrls[0]"></td>
+        <td>{{product.product.name}}</td>
+        <td>
+          <p>{{product.count}}</p>
+          <button (click)="add(product.product)">+</button>
+          <button (click)="remove(product.product)">-</button>
+          <button (click)="removeAll(product.product)">x</button>
+        </td>
+        <td>£{{product.count * product.product.price}}</td>
+      </tr>
+      <tr>
+        <td colspan="3">Total</td>
+        <td>£{{getTotal() | number:'1.2-2'}}</td>
+      </tr>
+    </table>
+    <div class="d-flex justify-content-end">
+      <button (click)="placeOrder()">Place order</button>
+    </div>
+  </div>
+</div>

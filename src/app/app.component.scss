@@ -1,0 +1,71 @@
+@import '../styles/variables.scss';
+
+:host {
+    .site-header {
+        display: flex;
+        justify-content: space-between;
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+
+            span {
+                margin-right: 5px;
+            }
+        }
+    }
+    .site-footer {
+        background-color: $menu-background;
+        padding: 20px 40px;
+        min-height: 100px;
+    }
+    .nav-menu {
+        position: relative;
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: $menu-hover;
+            padding: 10px 20px;
+            text-align: left;
+            cursor: default;
+            z-index: 1;
+
+            .type-list {
+                list-style: none;
+            }
+
+            .type-item {
+                cursor: pointer;
+                width: 100%;
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+
+            &.show {
+                display: block !important;
+            }
+        }
+        .nav-item {
+            position: static;
+            background-color: $menu-background;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+
+            &:hover {
+                background-color: $menu-hover;
+            }
+
+            a {
+                color: $font-color;
+                text-decoration: none;
+            }
+        }
+    }
+}

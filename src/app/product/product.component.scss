@@ -1,0 +1,54 @@
+:host {
+    .content {
+        padding-top: 25px;
+    }
+    .message {
+        color: #181;
+    }
+
+    .main-image, .small-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .main-image img {
+        max-height: 300px;
+    }
+
+    .small-image {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        
+
+        &:hover {
+            background-color: #ddd;
+            
+            img {
+                opacity: 1;
+            }
+        }
+
+        img {
+            max-height: 75px;
+            opacity: 0.5;
+        }
+
+        &.selected {
+            cursor: default;
+
+            img {
+                opacity: 1;
+            }
+        }
+    }
+
+    .details-wrapper {
+        padding-top: 25px;
+    }
+}

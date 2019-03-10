@@ -1,0 +1,13 @@
+:host {
+    .content {
+        margin-top: 25px;
+    }
+
+    .team-member {
+        text-align: center;
+
+        p:not(:last-child) {
+            font-weight: bold;
+        }
+    }
+}

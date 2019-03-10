@@ -1,0 +1,15 @@
+:host {
+    .product-wrapper {
+        .image-wrapper {
+            width: 150px;
+            
+            img {
+                max-height: 100px;
+            }
+        }
+    }
+
+    .basket-table {
+        width: 100%;
+    }
+}

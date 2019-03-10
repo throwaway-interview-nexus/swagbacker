@@ -1,0 +1,49 @@
+<div class="application-wrapper container">
+  <div class="site-header">
+    <h1>Swagbacker</h1>
+    <div class="header-buttons">
+      <span *ngIf="user">Hello {{this.user.email}}</span>
+      <span *ngIf="user">|</span>
+      <span *ngIf="user && user.isAdmin"><a [routerLink]="['/admin']">Add Products</a></span>
+      <span *ngIf="user && user.isAdmin">|</span>
+      <span *ngIf="!user" title="Login"><a [routerLink]="['/login']">Login</a></span>
+      <span *ngIf="user" title="Logout"><a href="" (click)="logout()">Logout</a></span>
+      <span>|</span>
+      <span title="Basket"><a [routerLink]="['/basket']"><i class="fas fa-shopping-cart"></i></a></span>
+    </div>
+  </div>
+  <div class="nav-menu row">
+    <div class="nav-item col-3" [routerLink]="['']"><a>Home</a></div>
+    <div class="nav-item col-3" [routerLink]="['/about']"><a>About</a></div>
+    <div class="nav-item col-3" (mouseenter)="showMerchandise = true;" (mouseleave)="showMerchandise = false;">
+      <div [routerLink]="['/merchandise']" (click)="showMerchandise = false;">
+        <a>Merchandise</a>
+      </div>
+      <div class="dropdown d-none" [class.show]="showMerchandise">
+        <div class="dropdown-content row">
+          <div class="by-category col-6">
+            <span>By Category</span>
+            <ul class="type-list">
+              <li *ngFor="let category of categories" class="type-item" (click)="showMerchandise = false;" [routerLink]="['/merchandise/category/' + category]">
+                {{category}}
+              </li>
+            </ul>
+          </div>
+          <div class="by-game col-6">
+            <span>By Game</span>
+            <ul class="type-list">
+              <li *ngFor="let game of games" class="type-item" (click)="showMerchandise = false;" [routerLink]="['/merchandise/game/' + game]">
+                {{game}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item col-3" [routerLink]="['/contact']"><a>Contact Us</a></div>
+  </div>
+  <router-outlet></router-outlet>
+  <div class="site-footer">
+    <span class="small">Copyright Swagbacker 2019</span>
+  </div>
+</div>
