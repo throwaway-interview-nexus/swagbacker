@@ -1,5 +1,9 @@
 <div class="page-wrapper">
-  <div class="content row">
+  <div class="content row" *ngIf="!product">
+    <h2>Product not found</h2>
+    <p>Hmm... are you sure that's the one you meant? We don't seem to have that one right now, but we have lots of other cool stuff! Maybe check those out instead? Ok. Thanks.</p>
+  </div>
+  <div class="content row" *ngIf="product">
     <div class="col-4 image-wrapper">
       <div class="main-image">
         <img [src]="mainImage">
@@ -12,7 +16,7 @@
     </div>
     <div class="col-8 details-wrapper">
       <h2 class="product-name">{{product.name}}</h2>
-      <h3>£{{product.price}}</h3>
+      <h3>£{{product.price | number:'1.2-2'}}</h3>
       <p class="product-description">{{product.description}}</p>
       <app-goal-status [product]="product"></app-goal-status>
       <span>{{getProductStatus()}}</span><br/>
@@ -20,11 +24,4 @@
       <p *ngIf="message" class="message" [@fadeInOut]>{{message}}</p>
     </div>
   </div>
-  <!-- Image -->
-  <!-- Name -->
-  <!-- Description -->
-  <!-- Price -->
-  <!-- Goal progress -->
-  <!-- Status -->
-  <!-- Buy button -->
 </div>

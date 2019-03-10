@@ -40,6 +40,10 @@ export class NewUser implements Action {
 const storedState = sessionStorage.getItem('basket');
 const initialState: BasketState = storedState && storedState != 'null' && storedState != 'undefined' ? JSON.parse(storedState) : {};
 
+// This is the main RxJs state management reducer.
+// It handles basket state by using the sessionStorage. This could be
+// done in localStorage or using cookies to persist across tabs, but I
+// didn't want to pollute the browser with too much tracking for a PoC.
 export function basketReducer(state: BasketState = initialState, action: Action): BasketState {
     let payload: Product;
     switch (action.type) {

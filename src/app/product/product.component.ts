@@ -3,7 +3,6 @@ import { ProductsService } from '../services/products/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../interfaces/product';
 import * as moment from 'moment';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { fadeInOutAnimation } from '../animations/fadeInOut.animation';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 
@@ -24,15 +23,15 @@ export class ProductComponent implements OnInit {
     private _authenticationService: AuthenticationService,
     private _router: Router,
   ) {
+  }
+
+  ngOnInit() {
     this._route.params.subscribe(p => {
       this._productsService.getProductById(+p.id).subscribe(product => {
         this.product = product;
         this.mainImage = product.imageUrls[0];
       });
     });
-  }
-
-  ngOnInit() {
   }
 
   public getProductStatus(): string {
@@ -66,8 +65,10 @@ export class ProductComponent implements OnInit {
     if (!!this._authenticationService.user) {
       this._productsService.addToBasket(this.product);
       this.message = 'Added to basket';
+      // Fade out the message after 3 seconds
       setTimeout(() => this.message = undefined, 3000);
     } else {
+      // Can't add to basket if not logged in
       this._router.navigate(['/login']);
     }
   }

@@ -13,6 +13,11 @@ import { sweepUpAnimation } from '../animations/sweepUp.animation';
 export class ProductListComponent implements OnInit {
   @Input() public products: Product[];
 
+  // This is the main reused component in the application. I desgined
+  // it as a list rather than having each item be its own component so
+  // that I could do the sweep up animation nicely - with more time, I'd
+  // also componentise the individual product entries (and wrestle with CSS
+  // to make sure all the images were the same height in a responsive way)
   constructor() { }
 
   ngOnInit() {

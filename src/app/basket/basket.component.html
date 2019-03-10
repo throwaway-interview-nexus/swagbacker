@@ -16,7 +16,7 @@
           <button (click)="remove(product.product)">-</button>
           <button (click)="removeAll(product.product)">x</button>
         </td>
-        <td>£{{product.count * product.product.price}}</td>
+        <td>£{{product.count * product.product.price | number:'1.2-2'}}</td>
       </tr>
       <tr>
         <td colspan="3">Total</td>

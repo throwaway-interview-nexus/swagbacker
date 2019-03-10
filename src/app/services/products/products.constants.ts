@@ -1,3 +1,4 @@
+// Products stored as JSON object rather than persistent data
 export const ProductsData = [
     {
         id: 1,

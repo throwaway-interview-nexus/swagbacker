@@ -1,6 +1,51 @@
 <div class="page-wrapper">
   <div class="content">
     <h2>Add a Product</h2>
-    <form #addProduct (submit)="addProduct()"></form>
+    <form (submit)="addProduct()">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" [(ngModel)]="formModel.name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" name="description" [(ngModel)]="formModel.description" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" name="category" [(ngModel)]="formModel.category" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="game">Game</label>
+            <input type="text" name="game" [(ngModel)]="formModel.game" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="imageUrls">Image Urls (comma separated)</label>
+            <input type="text" name="imageUrls" [(ngModel)]="formModel.imageUrls" class="form-control">
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label for="goal">Goal</label>
+            <input type="number" name="goal" [(ngModel)]="formModel.goal" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" name="price" [(ngModel)]="formModel.price" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="start">Start</label>
+            <input type="date" name="start" [(ngModel)]="formModel.start" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="expiry">Expiry</label>
+            <input type="date" name="expiry" [(ngModel)]="formModel.expiry" class="form-control">
+          </div>
+          <button>Add</button>
+          <span *ngIf="errorMessage" [@fadeInOut]>{{errorMessage}}</span>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

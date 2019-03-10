@@ -24,6 +24,7 @@ export class AppComponent {
     private _basketStore: Store<BasketState>,
   ) {
     this._productsService.getProducts().subscribe(products => {
+      // new Set(Array) returns distinct values if array is of primitives
       this.categories = [
         ...new Set(products.map(p => p.category).sort()),
         'All',
@@ -39,9 +40,24 @@ export class AppComponent {
       this.state = state;
     });
 
+    // Hooking up user session to basket
     this._authenticationService.userSet.subscribe((u: User) => {
       this.setUser(u);
     });
+
+    this._productsService.addProduct.subscribe(() => {
+      this._productsService.getProducts().subscribe(products => {
+        this.categories = [
+          ...new Set(products.map(p => p.category).sort()),
+          'All',
+        ];
+  
+        this.games = [
+          ...new Set(products.map(p => p.game).sort()),
+          'All',
+        ];
+      });
+    })
 
     this.setUser(this._authenticationService.user);
   }

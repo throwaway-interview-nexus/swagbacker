@@ -14,8 +14,7 @@ export class GoalStatusComponent implements OnInit {
 
   ngOnInit() {
     this.percentRemaining = this.product.orders > this.product.goal ?
-      0 :
-      100 * (1 - (this.product.orders / this.product.goal));
+      0 : 100 * (1 - (this.product.orders / this.product.goal));
   }
 
 }

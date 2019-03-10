@@ -9,6 +9,9 @@ export class AuthenticationService {
   public user: User;
   public userSet: EventEmitter<User>;
 
+  // User is also being tracked via sessionStorage -
+  // would obviously hook in to API calls using HttpClientModule
+  // if data persistence were a thing
   constructor() {
     this.userSet = new EventEmitter<User>();
     const storedUser = sessionStorage.getItem('user');

@@ -17,6 +17,12 @@ export class MerchandiseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Note that I did not opt to do pagination, searching or sorting -
+    // this was mostly due to time constraints and wanting to focus on
+    // data persistence with RxJs as well as unit test coverage. I instead
+    // opted for filtering by category/game as an option for this page.
+    // For pagination I would likely use on-scroll loading for this page in
+    // a real application
     this._route.params.subscribe(p => {
       if ((p.bytype === 'category' || p.bytype === 'game') && p.type !== 'All') {
         this._productsService.getProducts(p.bytype, p.type).subscribe(products => {

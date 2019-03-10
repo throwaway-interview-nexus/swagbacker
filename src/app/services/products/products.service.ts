@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { Product } from '../../interfaces/product';
 import { ProductsData } from './products.constants';
@@ -12,16 +12,25 @@ import { AddToBasket, RemoveFromBasket, RemoveAllFromBasket, ClearBasket, NewUse
 export class ProductsService {
   private products: Product[];
   public basket: BasketState;
+  public addProduct: EventEmitter<void>;
 
   constructor(
     private basketStore: Store<BasketState>
   ) {
+    // Using the sessionStorage-backed RxJs store
+    // to maintain the basket state - I feel like this
+    // probably should have been its own BasketService
+    // (if following SOLID principles), but I went too
+    // deep to refactor it out with the time I had
     this.basketStore.select('basket').subscribe(s => {
       this.basket = s;
     });
     this.products = ProductsData;
+    this.addProduct = new EventEmitter();
   }
 
+  // Used Observable.from (which is apparently just from now) to
+  // simulate the result of an http request to get products
   public getProducts(type?: string, typeName?: string): Observable<Product[]> {
     const products = type === undefined && typeName === undefined ?
       this.products :
@@ -29,7 +38,7 @@ export class ProductsService {
     return from([products]);
   }
 
-  public updateProducts() {
+  public updateProducts(): void {
     const sessionKey = this.basket.sessionKey;
     const keys = Object.keys(this.basket).filter(k => k != 'sessionKey');
     for (let i = 0, tot = keys.length; i < tot; i++) {
@@ -41,6 +50,11 @@ export class ProductsService {
     }
     this.basketStore.dispatch(new ClearBasket());
     this.basketStore.dispatch(new NewUser(sessionKey));
+  }
+
+  public addNewProduct(product: Product): void {
+    this.products.push(product);
+    this.addProduct.emit();
   }
 
   public getProductById(id: number): Observable<Product> {

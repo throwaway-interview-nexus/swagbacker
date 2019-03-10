@@ -20,7 +20,7 @@ export class BasketComponent implements OnInit {
     return Object.keys(this._productsService.basket).filter(k => k != 'sessionKey').length == 0;
   }
 
-  public getBasketItems(): Product[] {
+  public getBasketItems(): {product: Product, count: number}[] {
     return Object.keys(this._productsService.basket).filter(k => k != 'sessionKey').map(k => this._productsService.basket[k]);
   }
 

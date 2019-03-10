@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._productsService.getProducts(undefined, undefined).subscribe((products) => {
+    this._productsService.getProducts().subscribe((products) => {
+      // Shows all products currently live
       this.products = products.filter(p => moment(p.start).isBefore(moment()) && moment(p.expiry).isAfter(moment()));
     });
   }

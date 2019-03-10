@@ -5,7 +5,7 @@
     </div>
     <div class="product-description">
       <span class="product-name">{{product.name}}</span><br/>
-      <span class="product-price">£{{product.price}}</span>
+      <span class="product-price">£{{product.price | number:'1.2-2'}}</span>
       <app-goal-status [product]="product"></app-goal-status>
       <span>{{getProductStatus(product)}}</span>
     </div>
