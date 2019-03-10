@@ -65,10 +65,11 @@ describe('AppComponent', () => {
     expect(productsService.getProducts).toHaveBeenCalled();
   });
 
-  it('should initialise categories, games and state', () => {
+  it('should initialise categories, games, showMerchandise and state', () => {
     expect(component.categories).not.toBeUndefined();
     expect(component.games).not.toBeUndefined();
     expect(component.state).not.toBeUndefined();
+    expect(component.showMerchandise).not.toBeUndefined();
   });
 
   it('should call logout on logout', () => {

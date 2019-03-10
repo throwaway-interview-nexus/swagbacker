@@ -1,4 +1,4 @@
-import { BasketState } from "../interfaces/basketState";
+import { BasketState } from '../interfaces/basketState';
 import { basketReducer, AddToBasket, RemoveFromBasket, RemoveAllFromBasket, ClearBasket, NewUser } from './basket.reducer';
 
 describe('basketReducer', () => {
@@ -23,13 +23,13 @@ describe('basketReducer', () => {
 
     describe('RemoveFromBasket', () => {
         it('should not mutate state if property not present', () => {
-            let initialState: BasketState = {
+            const initialState: BasketState = {
                 1: {
                     product: {id: 1} as any,
                     count: 1
                 }
             };
-            let state = basketReducer(initialState, new RemoveFromBasket({id: 2} as any));
+            const state = basketReducer(initialState, new RemoveFromBasket({id: 2} as any));
             expect(state).toEqual(initialState);
         });
 
@@ -58,13 +58,13 @@ describe('basketReducer', () => {
 
     describe('RemoveAllFromBasket', () => {
         it('should not mutate state if none in basket', () => {
-            let initialState: BasketState = {
+            const initialState: BasketState = {
                 1: {
                     product: {id: 1} as any,
                     count: 1
                 }
             };
-            let state = basketReducer(initialState, new RemoveAllFromBasket({id: 2} as any));
+            const state = basketReducer(initialState, new RemoveAllFromBasket({id: 2} as any));
             expect(state).toEqual(initialState);
         });
 

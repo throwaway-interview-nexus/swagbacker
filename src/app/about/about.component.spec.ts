@@ -27,5 +27,5 @@ describe('AboutComponent', () => {
   it('should have three content sections', () => {
     const contents = fixture.debugElement.queryAll(By.css('.content'));
     expect(contents.length).toEqual(3);
-  })
+  });
 });

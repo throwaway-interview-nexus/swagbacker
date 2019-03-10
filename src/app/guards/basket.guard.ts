@@ -13,7 +13,7 @@ export class BasketGuard implements CanActivate {
   ) {
 
   }
-  
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -24,5 +24,4 @@ export class BasketGuard implements CanActivate {
       return false;
     }
   }
-  
 }

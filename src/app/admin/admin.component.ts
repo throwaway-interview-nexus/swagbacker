@@ -49,7 +49,7 @@ export class AdminComponent implements OnInit {
     } else if (this.formModel.price <= 0) {
       this.errorMessage = 'Price must be greater than 0.';
     } else if (this.formModel.imageUrls.length === 0) {
-      this.errorMessage = 'Must specify at least one image.'
+      this.errorMessage = 'Must specify at least one image.';
     } else if (!this.formModel.name || !this.formModel.description || !this.formModel.category || !this.formModel.game) {
       this.errorMessage = 'All fields must be completed.';
     } else {

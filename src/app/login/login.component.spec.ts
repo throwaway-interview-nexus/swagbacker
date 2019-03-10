@@ -46,7 +46,7 @@ describe('LoginComponent', () => {
   it('should navigate home on login', () => {
     component.login('', '', true);
     expect(router.navigate).toHaveBeenCalledWith(['/']);
-  })
+  });
 
   describe('signup', () => {
     let signup: jasmine.Spy;

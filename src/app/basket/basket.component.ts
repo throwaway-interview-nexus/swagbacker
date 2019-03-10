@@ -17,15 +17,15 @@ export class BasketComponent implements OnInit {
   }
 
   public basketIsEmpty(): boolean {
-    return Object.keys(this._productsService.basket).filter(k => k != 'sessionKey').length == 0;
+    return Object.keys(this._productsService.basket).filter(k => k !== 'sessionKey').length === 0;
   }
 
   public getBasketItems(): {product: Product, count: number}[] {
-    return Object.keys(this._productsService.basket).filter(k => k != 'sessionKey').map(k => this._productsService.basket[k]);
+    return Object.keys(this._productsService.basket).filter(k => k !== 'sessionKey').map(k => this._productsService.basket[k]);
   }
 
   public getTotal(): number {
-    return Object.keys(this._productsService.basket).filter(k => k != 'sessionKey').reduce((sum, key) => {
+    return Object.keys(this._productsService.basket).filter(k => k !== 'sessionKey').reduce((sum, key) => {
       const curr = this._productsService.basket[key];
       return sum + (curr.count * curr.product.price);
     }, 0);

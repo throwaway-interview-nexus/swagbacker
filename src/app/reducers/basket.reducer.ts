@@ -38,7 +38,7 @@ export class NewUser implements Action {
 }
 
 const storedState = sessionStorage.getItem('basket');
-const initialState: BasketState = storedState && storedState != 'null' && storedState != 'undefined' ? JSON.parse(storedState) : {};
+const initialState: BasketState = storedState && storedState !== 'null' && storedState !== 'undefined' ? JSON.parse(storedState) : {};
 
 // This is the main RxJs state management reducer.
 // It handles basket state by using the sessionStorage. This could be
@@ -76,7 +76,7 @@ export function basketReducer(state: BasketState = initialState, action: Action)
             break;
         case BasketActions.ClearBasket:
             const keys = Object.keys(state);
-            for (var i = 0, tot = keys.length; i < tot; i++) {
+            for (let i = 0, tot = keys.length; i < tot; i++) {
                 delete state[keys[i]];
             }
             break;

@@ -15,7 +15,6 @@ describe('MerchandiseComponent', () => {
   let component: MerchandiseComponent;
   let fixture: ComponentFixture<MerchandiseComponent>;
   let route: ActivatedRoute;
-  let routeParamsSpy: jasmine.Spy;
   let productsService: ProductsService;
 
   beforeEach(async(() => {

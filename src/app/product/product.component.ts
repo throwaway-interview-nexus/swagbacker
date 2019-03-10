@@ -38,7 +38,10 @@ export class ProductComponent implements OnInit {
     if (this.product.status === 'Taking orders') {
       const now = moment();
       const daysLeft = moment(this.product.expiry).diff(now, 'days');
-      if (daysLeft > 0) return daysLeft + ' days left (expires on ' + moment(this.product.expiry).subtract(1, 'minute').format('DD-MM-YYYY') + ')';
+      if (daysLeft > 0) {
+        return `${daysLeft} days left (expires on ${moment(this.product.expiry)
+          .subtract(1, 'minute').format('DD-MM-YYYY')})`;
+      }
       const hoursLeft = moment(this.product.expiry).diff(now, 'hours');
       const minutesLeft = moment(this.product.expiry).diff(now, 'minutes');
       return `${hoursLeft}:${minutesLeft} left`;
@@ -56,8 +59,12 @@ export class ProductComponent implements OnInit {
   }
 
   public disabledText(): string {
-    if (!this.hasStarted()) return 'The backing period for this item has not started yet. Be patient!';
-    if (this.hasEnded()) return 'The backing period is over and we are no longer taking orders on this item.'
+    if (!this.hasStarted()) {
+      return 'The backing period for this item has not started yet. Be patient!';
+    }
+    if (this.hasEnded()) {
+      return 'The backing period is over and we are no longer taking orders on this item.';
+    }
     return '';
   }
 

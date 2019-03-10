@@ -1,6 +1,6 @@
 # Swagbacker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5, node v11.10.1 and npm v6.7.0.
 
 ## Development server
 

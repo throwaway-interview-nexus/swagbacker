@@ -30,7 +30,7 @@ describe('AuthenticationService', () => {
       service.login('', '', true);
       expect(service.user).not.toBeUndefined();
     });
-  
+
     it('should emit from userSet on login', () => {
       const service = TestBed.get(AuthenticationService);
       spyOn(service.userSet, 'emit');
@@ -52,7 +52,7 @@ describe('AuthenticationService', () => {
       expect(service.signup('', 'a', 'a')).toEqual('');
       expect(service.user).not.toBeUndefined();
     });
-  
+
     it('should emit from userSet on success', () => {
       const service = TestBed.get(AuthenticationService);
       spyOn(service.userSet, 'emit');
@@ -68,7 +68,7 @@ describe('AuthenticationService', () => {
       service.logout();
       expect(service.user).toBeUndefined();
     });
-  
+
     it('should emit from userSet', () => {
       const service = TestBed.get(AuthenticationService);
       spyOn(service.userSet, 'emit');

@@ -101,13 +101,13 @@ describe('ProductComponent', () => {
       component.hasStarted = () => false;
       expect(component.disabledText()).toContain('has not started');
     });
-    
+
     it('should return expired if expired', () => {
       component.hasStarted = () => true;
       component.hasEnded = () => true;
       expect(component.disabledText()).toContain('backing period is over');
     });
-    
+
     it('should return empty string if ongoing', () => {
       component.hasStarted = () => true;
       component.hasEnded = () => false;

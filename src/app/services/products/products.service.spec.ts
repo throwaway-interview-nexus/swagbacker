@@ -94,7 +94,7 @@ describe('ProductsService', () => {
 
     it('should set the status of a product if it is now fully funded', () => {
       const service = TestBed.get(ProductsService);
-      const product = ProductsData.filter(p => p.status == 'Taking orders')[0];
+      const product = ProductsData.filter(p => p.status === 'Taking orders')[0];
       const currentStatus = product.status;
       service.basket[product.id] = {product, count: product.goal - product.orders};
       service.updateProducts();

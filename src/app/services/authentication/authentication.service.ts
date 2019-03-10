@@ -24,7 +24,7 @@ export class AuthenticationService {
   public login(email: string, password: string, isAdmin: boolean): void {
     const sessionKey = uuid();
     const user = {
-      email: email,
+      email,
       sessionKey,
       isAdmin,
     };
@@ -39,7 +39,7 @@ export class AuthenticationService {
     }
     const sessionKey = uuid();
     const user = {
-      email: email,
+      email,
       sessionKey,
       isAdmin: false,
     };

@@ -12,11 +12,11 @@ import { ClearBasket, NewUser } from './reducers/basket.reducer';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'swagbacker';
   public categories: string[];
   public games: string[];
   public user: User;
   public state: BasketState;
+  public showMerchandise: boolean;
 
   constructor(
     private _authenticationService: AuthenticationService,
@@ -35,7 +35,7 @@ export class AppComponent {
         'All',
       ];
     });
-    
+
     this._basketStore.select('basket').subscribe(state => {
       this.state = state;
     });
@@ -51,15 +51,17 @@ export class AppComponent {
           ...new Set(products.map(p => p.category).sort()),
           'All',
         ];
-  
+
         this.games = [
           ...new Set(products.map(p => p.game).sort()),
           'All',
         ];
       });
-    })
+    });
 
     this.setUser(this._authenticationService.user);
+
+    this.showMerchandise = false;
   }
 
   public logout(): void {

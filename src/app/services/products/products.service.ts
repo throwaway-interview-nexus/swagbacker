@@ -40,11 +40,11 @@ export class ProductsService {
 
   public updateProducts(): void {
     const sessionKey = this.basket.sessionKey;
-    const keys = Object.keys(this.basket).filter(k => k != 'sessionKey');
+    const keys = Object.keys(this.basket).filter(k => k !== 'sessionKey');
     for (let i = 0, tot = keys.length; i < tot; i++) {
-      const product = this.products.find(p => p.id == +keys[i]);
+      const product = this.products.find(p => p.id === +keys[i]);
       product.orders += this.basket[keys[i]].count;
-      if (product.orders >= product.goal && product.status != 'Fully funded') {
+      if (product.orders >= product.goal && product.status !== 'Fully funded') {
         product.status = 'Fully funded';
       }
     }

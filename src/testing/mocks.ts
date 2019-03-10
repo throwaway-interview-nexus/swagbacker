@@ -13,12 +13,14 @@ import { EventEmitter } from '@angular/core';
 // want to spend too much time on both integrated and unit testing,
 // so I focused on the unit testing as I'm more familiar with it
 export class MockProductsService {
+    basket: BasketState = {};
+
     getProducts(): Observable<Product[]> {
         return from([ProductsData]);
     }
 
     addNewProduct(product: Product): void {
-        
+
     }
 
     getProductById(id: number): Observable<Product> {
@@ -40,8 +42,6 @@ export class MockProductsService {
     removeAllFromBasket(product?: Product): void {
 
     }
-
-    basket: BasketState = {};
 }
 
 export class MockAuthenticationService {
@@ -57,7 +57,7 @@ export class MockAuthenticationService {
     }
 
     logout(): void {
-        
+
     }
 }
 
@@ -67,6 +67,6 @@ export class MockStore<T> {
     }
 
     dispatch(action: Action): void {
-        
+
     }
 }

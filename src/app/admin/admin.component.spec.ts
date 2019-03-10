@@ -60,7 +60,7 @@ describe('AdminComponent', () => {
       const expiry = new Date();
       expiry.setDate(expiry.getDate() - 5);
       component.formModel = {
-        expiry
+        expiry,
       };
       component.addProduct();
       expect(productsService.addNewProduct).not.toHaveBeenCalled();

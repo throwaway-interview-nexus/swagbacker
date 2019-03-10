@@ -31,7 +31,8 @@ export const ProductsData = [
         orders: 93,
         start: '2019-01-08T00:00:00.000',
         expiry: '2019-02-07T00:00:00.000',
-        description: 'When life gives you lemons, don\'t make lemonade. Make life take the lemons back! Get mad! Get this stylish messenger bag instead! The padded compartment inside is 16" wide, 10" tall and 1" deep, perfect for a laptop or small companion cube.',
+        description: 'When life gives you lemons, don\'t make lemonade. Make life take the lemons back!' +
+            'Get mad! Get this stylish messenger bag instead! The padded compartment inside is 16" wide, 10" tall and 1" deep, perfect for a laptop or small companion cube.',
         status: 'Expired'
     },
     {
